@@ -9,7 +9,6 @@ class Calculator:
     def get_today_stats(self):
         today = dt.datetime.now().date()
         today_stats = 0
-        #today_stats = sum(record.amount for record in self.records if record.date == today)
         for record in self.records:
             if record.date == today:
                 today_stats += record.amount
@@ -69,24 +68,3 @@ class Record:
         else:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y').date()
         self.comment = comment
-
-
-
-# создадим калькулятор денег с дневным лимитом 1000
-# cash_calculator = CashCalculator(1000)
-# cash_calculator.add_record(Record(amount=145, comment="кофе")) 
-# cash_calculator.add_record(Record(amount=300, comment="Серёге за обед"))
-# cash_calculator.add_record(Record(amount=3000, comment="бар в Танин др", date="20.01.2023"))
-#print(cash_calculator.get_today_cash_remained("usd"))
-# должно напечататься
-# На сегодня осталось 555 руб
-#print(cash_calculator.get_week_stats())
-
-calories_calculator = CaloriesCalculator(2415)
-calories_calculator.add_record(Record(amount=1186, comment="Кусок тортика. И ещё один.", date="20.01.2023"))
-calories_calculator.add_record(Record(amount=84, comment="Йогурт.", date="20.01.2023"))
-calories_calculator.add_record(Record(amount=1140, comment="Баночка чипсов.", date="20.01.2023"))
-
-print(calories_calculator.get_calories_remained())
-
-
